@@ -4,8 +4,14 @@ require "yaml"
 def load_library(file_path)
   emoticons = YAML.load_file(file_path)
   put_hash = {
-    'm'
-  }# code goes here
+    'get_meaning' => {}
+    'get_emoticon' => {}
+  }
+  emoticons.each do |key, value|
+    put_hash['get_emoticon'][value[0]] = emoticons[key][1]
+    put_hash['get_meaning'][value[1]] = key
+  end
+  put_hash # code goes here
 end
 
 def get_japanese_emoticon
